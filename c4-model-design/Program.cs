@@ -12,9 +12,9 @@ namespace c4_model_design
 
         static void Banking()
         {
-            const long workspaceId = 69924;
-            const string apiKey = "7ba302b5-585c-4ea5-a0fa-d2299052ebba";
-            const string apiSecret = "dfd208d8-c8b7-409a-b727-c99a51a377c7";
+            const long workspaceId = 76872;
+            const string apiKey = "ad8987aa-8384-414a-a6c1-041da9deac2b";
+            const string apiSecret = "a9bf81b4-6aa3-4328-8501-9ad230ad9bd6";
 
             StructurizrClient structurizrClient = new StructurizrClient(apiKey, apiSecret);
             Workspace workspace = new Workspace("Software Design - C4 Model - Safe Technology", "Software Architecture Design Safe Technology");
@@ -307,10 +307,10 @@ namespace c4_model_design
             Component userDomain = userBoundedContext.AddComponent("User Domain Model", "Contiene todas las entidades del Bounded Context");
             Component userValidation = userBoundedContext.AddComponent("User Validation", "Se encarga de validar que los datos del usuario son los correctos");
             
-            Component reportController = userBoundedContext.AddComponent("Report Controller", "Provee las RestAPI para el manejo de reportes");
-            Component reportService = userBoundedContext.AddComponent("Report Service", "Provee los métodos para la inscripción y gestión de reportes");
-            Component reportRepository = userBoundedContext.AddComponent("Report Repository", "Provee los métodos para la persistencia de los datos de los reportes");
-            Component reportDomain = userBoundedContext.AddComponent("Report Domain Model", "Contiene todas las entidades del Bounded Context");
+            Component reviewController = userBoundedContext.AddComponent("Review Controller", "Provee las RestAPI para el manejo de reseñas");
+            Component reviewService = userBoundedContext.AddComponent("Review Service", "Provee los métodos para la inscripción y gestión de reseñas");
+            Component reviewRepository = userBoundedContext.AddComponent("Review Repository", "Provee los métodos para la persistencia de los datos de los reseñas");
+            Component reviewDomain = userBoundedContext.AddComponent("Review Domain Model", "Contiene todas las entidades del Bounded Context");
 
             springBootApi.Uses(userController, "Llamada API");
             userController.Uses(userService, "Llamada a los métodos del service");
@@ -319,11 +319,11 @@ namespace c4_model_design
             userDomain.Uses(userRepository, "Conforma");
             userRepository.Uses(dataBase, "Lee desde y Escribe a");
             
-            springBootApi.Uses(reportController, "Llamada API");
-            reportController.Uses(reportService, "Llamada a los métodos del service");
-            reportService.Uses(reportRepository, "Llamada a los métodos de persistencia del repository");
-            reportDomain.Uses(reportRepository, "Conforma");
-            reportRepository.Uses(dataBase, "Lee desde y Escribe a");
+            springBootApi.Uses(reviewController, "Llamada API");
+            reviewController.Uses(reviewService, "Llamada a los métodos del service");
+            reviewService.Uses(reviewRepository, "Llamada a los métodos de persistencia del repository");
+            reviewDomain.Uses(reviewRepository, "Conforma");
+            reviewRepository.Uses(dataBase, "Lee desde y Escribe a");
             
             //Tags
             userController.AddTags("userController");
@@ -332,10 +332,10 @@ namespace c4_model_design
             userDomain.AddTags("userDomain");
             userValidation.AddTags("userValidation");
             
-            reportController.AddTags("reportController");
-            reportService.AddTags("reportService");
-            reportRepository.AddTags("reportRepository");
-            reportDomain.AddTags("reportDomain");
+            reviewController.AddTags("reviewController");
+            reviewService.AddTags("reviewService");
+            reviewRepository.AddTags("reviewRepository");
+            reviewDomain.AddTags("reviewDomain");
             
             styles.Add(new ElementStyle("userController") {Background = "#50126D", Color = "#ffffff", Shape = Shape.Component});
             styles.Add(new ElementStyle("userService") {Background = "#50126D", Color = "#ffffff", Shape = Shape.Component});
@@ -343,10 +343,10 @@ namespace c4_model_design
             styles.Add(new ElementStyle("userDomain") {Background = "#50126D", Color = "#ffffff", Shape = Shape.Component});
             styles.Add(new ElementStyle("userValidation") {Background = "#50126D", Color = "#ffffff", Shape = Shape.Component});
             
-            styles.Add(new ElementStyle("reportController") {Background = "#0571ED", Color = "#ffffff", Shape = Shape.Component});
-            styles.Add(new ElementStyle("reportService") {Background = "#0571ED", Color = "#ffffff", Shape = Shape.Component});
-            styles.Add(new ElementStyle("reportRepository") {Background = "#0571ED", Color = "#ffffff", Shape = Shape.Component});
-            styles.Add(new ElementStyle("reportDomain") {Background = "#0571ED", Color = "#ffffff", Shape = Shape.Component});
+            styles.Add(new ElementStyle("reviewController") {Background = "#0571ED", Color = "#ffffff", Shape = Shape.Component});
+            styles.Add(new ElementStyle("reviewService") {Background = "#0571ED", Color = "#ffffff", Shape = Shape.Component});
+            styles.Add(new ElementStyle("reviewRepository") {Background = "#0571ED", Color = "#ffffff", Shape = Shape.Component});
+            styles.Add(new ElementStyle("reviewDomain") {Background = "#0571ED", Color = "#ffffff", Shape = Shape.Component});
             
             ComponentView componentView4 = viewSet.CreateComponentView(userBoundedContext, "Components4", "Component Diagram");
             componentView4.PaperSize = PaperSize.A4_Landscape;
